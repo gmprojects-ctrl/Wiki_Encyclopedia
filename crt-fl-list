@@ -31,6 +31,32 @@ recur_fn() {
 	done
 	}
 
+#Check if the script is run in the source directory of main wiki
+
+if [ -e "/home/$USER/.wikinotes" ]; then
+	if [ ! -s "/home/$USER/.wikinotes" ]; then
+		echo ".wikinotes file is empty"
+		exit
+	else
+		source "/home/$USER/.wikinotes"
+	fi
+else
+	echo "No .wikinotes file found"
+	echo "Would you like to create .wikinotes file y/n"
+	read RESPONSE
+	if [[ $RESPONSE == "y" ]]; then
+		 touch ".wikinotes" &&  mv ".wikinotes" "/home/$USER/"
+
+	fi
+	exit 
+fi 
+
+if [[ ! $WIKI_SOURCE = $(pwd) ]]; then
+	echo "This is not the source directory listed in .wikinotes"
+	exit
+fi
+
+
 if [ -e "full_index.md" ]; then
 	echo "Index already exists, preparing to rebuild"
 	echo " " > 'full_index.md' 
