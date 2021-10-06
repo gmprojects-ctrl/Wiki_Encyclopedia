@@ -11,3 +11,4 @@ A set  of shell scripts to create a encyclopedia  or wiki with markdown files.
 - **crt-notes** creates notes.
   The *-p* options creates a note with the name beginning with PN and then the time, date and a random number.
 
+- **openwiki** Uses nnn and tmux to create a basic file explorer for the wiki

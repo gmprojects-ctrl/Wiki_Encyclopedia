@@ -1,0 +1,9 @@
+#!/bin/sh
+if [ ! -e "/usr/bin/nnn" ]; then
+	echo "nnn not found, please install nnn"
+else
+	if [ -e "/home/$USER/.wikinotes" ]; then
+		source "/home/$USER/.wikinotes"
+		tmux new-session nnn "$WIKI_SOURCE"
+	fi
+fi
